@@ -106,7 +106,7 @@
 				]
 			},
 			{
-				"name": "Copy data1",
+				"name": "CosmotoSQL",
 				"type": "Copy",
 				"dependsOn": [
 					{
