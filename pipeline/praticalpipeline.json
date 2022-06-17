@@ -1,6 +1,116 @@
 {
 	"name": "praticalpipeline",
 	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['address']['building']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['address']['coord'][0]"
+								}
+							},
+							{
+								"source": {
+									"path": "$['address']['street']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['address']['zipcode']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['borough']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['cuisine']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['grades'][0]['date']['$date']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['grades'][0]['grade']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['grades'][0]['score']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['restaurant_id']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "restaurants",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "restaurants",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
 		"annotations": []
 	}
 }
