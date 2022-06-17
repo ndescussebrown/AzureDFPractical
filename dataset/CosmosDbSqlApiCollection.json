@@ -7,6 +7,9 @@
 		},
 		"annotations": [],
 		"type": "CosmosDbSqlApiCollection",
-		"schema": {}
+		"schema": {},
+		"typeProperties": {
+			"collectionName": "restaurantcosmo"
+		}
 	}
 }

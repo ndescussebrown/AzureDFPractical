@@ -126,56 +126,6 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "JsonSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "JsonReadSettings"
-						}
-					},
-					"sink": {
-						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "insert"
-					},
-					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "restaurants",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "CosmosDbSqlApiCollection",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "SQLData",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "CosmotoSQL",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
 						"type": "CosmosDbSqlApiSource",
 						"preferredRegions": []
 					},
@@ -184,17 +134,7 @@
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "$['Column_1']"
-								}
-							}
-						]
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
