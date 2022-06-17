@@ -1,0 +1,19 @@
+{
+	"name": "restaurants",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ndbAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "restaurants.json",
+				"container": "practicalcontainer"
+			}
+		},
+		"schema": {}
+	}
+}
