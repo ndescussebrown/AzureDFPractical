@@ -27,13 +27,8 @@
 						}
 					},
 					"sink": {
-						"type": "JsonSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "JsonWriteSettings"
-						}
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -105,7 +100,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "restaurants",
+						"referenceName": "CosmosDbSqlApiCollection",
 						"type": "DatasetReference"
 					}
 				]
