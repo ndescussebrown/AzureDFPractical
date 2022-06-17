@@ -13,12 +13,18 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "restaurant"
+				}
+			],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     documentForm: 'documentPerLine') ~> restaurantjson"
+				"     documentForm: 'documentPerLine') ~> restaurantjson",
+				"restaurantjson select(skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> restaurant"
 			]
 		}
 	}
